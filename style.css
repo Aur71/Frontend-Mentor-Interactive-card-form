@@ -52,7 +52,6 @@ main {
   color: black;
   background-color: white;
   display: flex;
-  justify-content: center;
   align-items: center;
   padding-left: 250px;
 }
@@ -147,6 +146,7 @@ form {
   flex-direction: column;
   gap: 10px;
   width: 400px;
+  margin: 0 auto;
 }
 
 label {
@@ -201,5 +201,20 @@ form button {
   padding: 15px;
   border-radius: 10px;
   font-size: 18px;
-  margin-top: 30px;
+  margin-top: 10px;
+}
+
+.error {
+  color: var(--error);
+  font-size: 12px;
+  margin-top: -5px;
+}
+
+.error-wrapper {
+  display: flex;
+  gap: 90px;
+  height: 20px;
+  width: 100%;
+  margin-top: -5px;
+  align-items: center;
 }

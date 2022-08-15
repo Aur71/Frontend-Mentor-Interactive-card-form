@@ -35,6 +35,7 @@
             id="name"
             required
           />
+          <div class="error">Can`t be blank</div>
           <label for="number">Card Number</label>
           <input
             type="text"
@@ -42,12 +43,13 @@
             id="number"
             required
           />
+          <p class="error">Wrong format, numbers only</p>
           <div class="date">
             <div class="exp-date">
               <label for="date">Exp. Date (MM/YY)</label>
               <div class="month-year">
-                <input id="month" type="month" placeholder="MM" required />
-                <input id="year" type="year" placeholder="YY" required />
+                <input id="month" type="number" placeholder="MM" required />
+                <input id="year" type="number" placeholder="YY" required />
               </div>
             </div>
             <div class="cvc">
@@ -60,6 +62,10 @@
                 required
               />
             </div>
+          </div>
+          <div class="error-wrapper">
+            <div class="error">Can`t be blank</div>
+            <div class="error">Can`t be blank</div>
           </div>
           <button type="submit">Confirm</button>
         </form>
