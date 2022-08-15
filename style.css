@@ -24,37 +24,44 @@
 
 body {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   font-size: 18px;
 }
 
 main {
   max-width: 1440px;
-  margin: 0 auto;
   height: 100%;
+  margin: 0 auto;
   display: flex;
 }
 
 .col-1 {
-  width: 30%;
-  height: 100vh;
+  min-width: 700px;
+  width: 700px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bk-container {
+  min-width: 483px;
+  width: 483px;
+  height: 100%;
+  background: url("images/bg-main-desktop.png") no-repeat center center/cover;
+}
+
+.card-container {
+  width: 100%;
+  height: 100%;
   color: white;
-  background: url(images/bg-main-desktop.png) no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
 
-.col-2 {
-  width: 70%;
-  height: 100vh;
-  color: black;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  padding-left: 250px;
-}
+/* Card front below */
 
 .card-front {
   position: absolute;
@@ -64,7 +71,7 @@ main {
   height: 245px;
   -webkit-box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.2);
-  transform: translate(130px, -140px);
+  transform: translate(-200px, -135px);
 }
 
 .card-front::before {
@@ -117,6 +124,7 @@ main {
   font-size: 14px;
   color: var(--clr2);
 }
+
 /* Card back below */
 
 .card-back {
@@ -127,7 +135,7 @@ main {
   height: 245px;
   -webkit-box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.2);
-  transform: translate(210px, 140px);
+  transform: translate(-120px, 140px);
 }
 
 .card-back p {
@@ -139,7 +147,15 @@ main {
   letter-spacing: 1px;
 }
 
-/* Form styling below */
+/* Col-2 below */
+
+.col-2 {
+  width: 740px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 form {
   display: flex;
@@ -162,6 +178,13 @@ input {
   border: 1px solid var(--clr2);
   color: var(--clr3);
   font-size: 18px;
+  outline: transparent;
+}
+
+input:focus-visible {
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%)) border-box;
+  border: 1px solid transparent;
 }
 
 .date {
@@ -181,7 +204,7 @@ input {
 }
 
 .month-year input {
-  width: 70px;
+  width: 80px;
 }
 
 .cvc {
@@ -204,6 +227,10 @@ form button {
   margin-top: 10px;
 }
 
+form button:hover {
+  background-color: hsl(276, 70%, 34%);
+}
+
 .error {
   color: var(--error);
   font-size: 12px;
@@ -212,9 +239,19 @@ form button {
 
 .error-wrapper {
   display: flex;
-  gap: 90px;
+  gap: 110px;
   height: 20px;
   width: 100%;
   margin-top: -5px;
   align-items: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
