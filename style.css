@@ -36,7 +36,6 @@ main {
 }
 
 .col-1 {
-  min-width: 700px;
   width: 700px;
   height: 100%;
   display: flex;
@@ -163,6 +162,8 @@ form {
   gap: 10px;
   width: 400px;
   margin: 0 auto;
+  animation: scale 0.5s linear forwards;
+  transform: scale(0);
 }
 
 label {
@@ -185,6 +186,7 @@ input:focus-visible {
   background: linear-gradient(white, white) padding-box,
     linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%)) border-box;
   border: 1px solid transparent;
+  outline: none;
 }
 
 .date {
@@ -225,6 +227,7 @@ form button {
   border-radius: 10px;
   font-size: 18px;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 form button:hover {
@@ -235,6 +238,7 @@ form button:hover {
   color: var(--error);
   font-size: 12px;
   margin-top: -5px;
+  display: none;
 }
 
 .error-wrapper {
@@ -254,4 +258,231 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.messege {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 400px;
+  display: none;
+  animation: scale 0.5s linear forwards;
+  transform: scale(0);
+}
+
+h1 {
+  margin-top: 20px;
+  text-transform: uppercase;
+  color: var(--clr4);
+  letter-spacing: 5px;
+}
+
+.messege p {
+  color: var(--clr3);
+  font-size: 23px;
+}
+
+.messege a {
+  background-color: var(--clr4);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.messege a:hover {
+  background-color: hsl(276, 70%, 34%);
+}
+
+@keyframes scale {
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Mobile design below */
+
+@media only screen and (max-width: 1150px) {
+  main {
+    max-width: 350px;
+    width: 350px;
+    min-width: 250px;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .col-1 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .bk-container {
+    min-width: 100vw;
+    height: 240px;
+    background: url("images/bg-main-mobile.png") no-repeat center center/cover;
+  }
+
+  .card-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+
+  .card-front {
+    width: 252px;
+    height: 150px;
+    transform: translate(-20px, 90px);
+    z-index: 2;
+  }
+
+  .card-front::before {
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .card-front::after {
+    width: 10px;
+    height: 10px;
+    top: 15px;
+    left: 35px;
+  }
+
+  .card-front p:nth-child(1) {
+    top: 85px;
+    left: 20px;
+    letter-spacing: 3px;
+    font-size: 14px;
+  }
+
+  .card-front p:nth-child(2) {
+    top: 120px;
+    left: 20px;
+    letter-spacing: 1px;
+    font-size: 9px;
+  }
+
+  .card-front p:nth-child(3) {
+    top: 120px;
+    left: 206px;
+    letter-spacing: 1px;
+    font-size: 9px;
+  }
+
+  /* Card back below */
+
+  .card-back {
+    width: 252px;
+    height: 150px;
+    transform: translate(20px, 5px);
+  }
+
+  .card-back p {
+    font-size: 10px;
+    letter-spacing: 1px;
+    top: 67px;
+    left: 210px;
+  }
+
+  /* Col-2 below */
+
+  .col-2 {
+    width: 100%;
+    height: 100%;
+    margin-top: 90px;
+    align-items: flex-start;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+  }
+
+  input {
+    font-size: 15px;
+  }
+
+  .month-year input {
+    width: 65px;
+  }
+
+  form button {
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 0px;
+  }
+
+  .error-wrapper {
+    gap: 95px;
+    height: 10px;
+  }
+
+  .error {
+    font-size: 10px;
+  }
+
+  .attribution {
+    font-size: 10px;
+  }
+
+  /* Messege below */
+
+  .messege {
+    gap: 15px;
+    width: 290px;
+  }
+
+  .messege img {
+    width: 60px;
+  }
+
+  h1 {
+    margin-top: 10px;
+    letter-spacing: 3px;
+    font-size: 30px;
+  }
+
+  .messege p {
+    font-size: 17px;
+  }
+
+  .messege a {
+    padding: 10px;
+    font-size: 17px;
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  main {
+    max-width: 250px;
+  }
+
+  .bk-container {
+    height: 240px;
+  }
+
+  .card-front {
+    width: 250px;
+    transform: translate(0px, 80px);
+  }
+
+  .card-back {
+    width: 250px;
+    transform: translate(0px, -6px);
+  }
 }
