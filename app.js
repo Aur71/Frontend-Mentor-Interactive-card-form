@@ -8,6 +8,7 @@ const cardNumber = document.getElementById("number")
 const cardMonth = document.getElementById("month");
 const cardYear = document.getElementById("year");
 const cardCVC = document.getElementById("CVC");
+const spans = document.querySelectorAll("span");
 
 
 formName.addEventListener("input", (e) => {
@@ -24,34 +25,30 @@ cardNumber.addEventListener("input", (e) => {
     arr.splice(14, 0, " ");
     const result = arr.join("");
     paragraphs[0].textContent = `${result}`
-})
-
-const dateM = [];
+});
 
 cardMonth.addEventListener("input", (e) => {
+    e.target.value = e.target.value.replace(/[^\d\s/]/g , "").substring(0, 2);
     if(e.target.value < 1 || e.target.value > 12) {
         e.target.value = e.target.value.replace("")
     }
+    spans[0].textContent = e.target.value;
+});
+
+cardYear.addEventListener("input", (e) => {
     e.target.value = e.target.value.replace(/[^\d\s/]/g , "").substring(0, 2);
-    const month = e.target.value;
-    dateM.push(month)
-})
+    spans[1].textContent = e.target.value;
+});
 
-console.log(dateM)
+cardCVC.addEventListener("input", (e) => {
+    e.target.value = e.target.value.replace(/[^\d\s/]/g , "").substring(0, 3);
+    paragraphs[3].textContent = e.target.value
+});
 
 
-button.addEventListener("click", () => {
-    if(paragraphs[1].textContent == "Jane Appleseed") {
-        errors[0].style.display = "block";
-        formName.style.border = "1px solid red"
-    } 
-    if(paragraphs[0].textContent == `0000 0000 0000 0000`) {
-        errors[1].style.display = "block";
-        cardNumber.style.border = "1px solid red"
-    }
-    
-    // else {
-    //     form.style.display = "none";
-    //     messege.style.display = "flex";
-    // }
-})
+// button.addEventListener("click", () => {
+//     if(a === true) {
+//         form.style.display = "none";
+//         messege.style.display = "flex";
+//     }
+// })
