@@ -37,41 +37,33 @@
             type="text"
             placeholder="e.g. Jane Appleseed"
             id="name"
-            required
           />
           <div class="error">Can`t be blank</div>
           <label for="number">Card Number</label>
           <input
-            type="number"
+            type="text"
             placeholder="e.g. 1234 5678 9123 0000"
             id="number"
-            required
           />
-          <p class="error">Wrong format, numbers only</p>
+          <p class="error">Can`t be blank</p>
           <div class="date">
             <div class="exp-date">
               <label for="date">Exp. Date (MM/YY)</label>
               <div class="month-year">
-                <input id="month" type="number" placeholder="MM" required />
-                <input id="year" type="number" placeholder="YY" required />
+                <input id="month" type="number" placeholder="MM" />
+                <input id="year" type="number" placeholder="YY" />
               </div>
             </div>
             <div class="cvc">
               <label for="CVC">CVC</label>
-              <input
-                type="number"
-                name="CVC"
-                id="CVC"
-                placeholder="e.g. 123"
-                required
-              />
+              <input type="text" name="CVC" id="CVC" placeholder="e.g. 123" />
             </div>
           </div>
           <div class="error-wrapper">
             <div class="error">Can`t be blank</div>
             <div class="error">Can`t be blank</div>
           </div>
-          <button type="submit">Confirm</button>
+          <a href="#" id="confirmBtn">CONFIRM</a>
         </form>
 
         <div class="messege">
