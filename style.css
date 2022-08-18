@@ -166,6 +166,14 @@ form {
   transform: scale(0);
 }
 
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: space-between;
+}
+
 label {
   text-transform: uppercase;
   font-size: 13px;
@@ -180,6 +188,7 @@ input {
   color: var(--clr3);
   font-size: 18px;
   outline: transparent;
+  width: 100%;
 }
 
 input:focus-visible {
@@ -205,20 +214,6 @@ input:focus-visible {
   gap: 10px;
 }
 
-.month-year input {
-  width: 80px;
-}
-
-.cvc {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.cvc input {
-  width: 100%;
-}
-
 #confirmBtn {
   background-color: var(--clr4);
   color: white;
@@ -229,27 +224,16 @@ input:focus-visible {
   margin-top: 10px;
   cursor: pointer;
   text-align: center;
-  text-decoration: none;
 }
 
 #confirmBtn:hover {
   background-color: hsl(276, 70%, 34%);
 }
 
-.error {
+.inputWrapper p {
   color: var(--error);
-  font-size: 12px;
-  margin-top: -5px;
+  font-size: 9px;
   display: none;
-}
-
-.error-wrapper {
-  display: flex;
-  gap: 110px;
-  height: 20px;
-  width: 100%;
-  margin-top: -5px;
-  align-items: center;
 }
 
 input::-webkit-outer-spin-button,
@@ -426,15 +410,6 @@ h1 {
     padding: 10px;
     font-size: 15px;
     margin-top: 0px;
-  }
-
-  .error-wrapper {
-    gap: 95px;
-    height: 10px;
-  }
-
-  .error {
-    font-size: 10px;
   }
 
   .attribution {

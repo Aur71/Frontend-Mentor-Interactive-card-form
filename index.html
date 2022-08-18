@@ -20,50 +20,65 @@
         <div class="bk-container"></div>
         <div class="card-container">
           <div class="card-front">
-            <p>0000 0000 0000 0000</p>
-            <p>Jane Appleseed</p>
+            <p data-paragraph>0000 0000 0000 0000</p>
+            <p data-paragraph>Jane Appleseed</p>
             <p><span>00</span>/<span>00</span></p>
           </div>
           <div class="card-back">
-            <p>000</p>
+            <p data-paragraph>000</p>
           </div>
         </div>
       </div>
       <div class="col-2">
         <form action="/">
-          <label for="name">Cardholder Name</label>
-          <input
-            pattern="[a-z\d]*"
-            type="text"
-            placeholder="e.g. Jane Appleseed"
-            id="name"
-          />
-          <div class="error">Can`t be blank</div>
-          <label for="number">Card Number</label>
-          <input
-            type="text"
-            placeholder="e.g. 1234 5678 9123 0000"
-            id="number"
-          />
-          <p class="error">Can`t be blank</p>
+          <div class="inputWrapper">
+            <label for="cardName">Cardholder Name</label>
+            <input
+              pattern="[a-z\d]*"
+              type="text"
+              placeholder="e.g. Jane Appleseed"
+              id="cardName"
+            />
+            <p>Can`t be blank</p>
+          </div>
+
+          <div class="inputWrapper">
+            <label for="cardNumber">Card Number</label>
+            <input
+              type="text"
+              placeholder="e.g. 1234 5678 9123 0000"
+              id="cardNumber"
+            />
+            <p>Can`t be blank</p>
+          </div>
+
           <div class="date">
             <div class="exp-date">
-              <label for="date">Exp. Date (MM/YY)</label>
+              <label>Exp. Date (MM/YY)</label>
               <div class="month-year">
-                <input id="month" type="number" placeholder="MM" />
-                <input id="year" type="number" placeholder="YY" />
+                <div class="inputWrapper">
+                  <input id="cardMonth" type="number" placeholder="MM" />
+                  <p>Can`t be blank</p>
+                </div>
+
+                <div class="inputWrapper">
+                  <input id="cardYear" type="number" placeholder="YY" />
+                  <p>Can`t be blank</p>
+                </div>
               </div>
             </div>
-            <div class="cvc">
-              <label for="CVC">CVC</label>
-              <input type="text" name="CVC" id="CVC" placeholder="e.g. 123" />
+            <div class="inputWrapper cvc">
+              <label for="cardCvc">CVC</label>
+              <input
+                type="text"
+                name="CVC"
+                id="cardCvc"
+                placeholder="e.g. 123"
+              />
+              <p>Can`t be blank</p>
             </div>
           </div>
-          <div class="error-wrapper">
-            <div class="error">Can`t be blank</div>
-            <div class="error">Can`t be blank</div>
-          </div>
-          <a href="#" id="confirmBtn">CONFIRM</a>
+          <button type="submit" id="confirmBtn">CONFIRM</button>
         </form>
 
         <div class="messege">
