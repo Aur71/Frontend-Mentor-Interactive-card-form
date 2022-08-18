@@ -10,11 +10,14 @@ const cardYear = document.getElementById("year");
 const cardCVC = document.getElementById("CVC");
 const spans = document.querySelectorAll("span");
 
+let cardHolderName;
 
-formName.addEventListener("input", (e) => {
-    e.target.value = e.target.value.replace(/[^a-z\s]/gi, '').substring(0, 20);
-    paragraphs[1].textContent = e.target.value
+formName.addEventListener("input", function() {
+    this.value = this.value.replace(/[^a-z\s]/gi, '').substring(0, 20);
+    paragraphs[1].textContent = this.value
+    return cardHolderName = this.value.toString();
 });
+
 
 cardNumber.addEventListener("input", (e) => {
     e.target.value = e.target.value.replace(/[^\d\s/]/g , "").substring(0, 16);
