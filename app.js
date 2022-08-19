@@ -21,7 +21,6 @@ form.addEventListener('submit', e => {
 function showThankYou(){    
     form.style.display = "none"
     messege.style.display = "flex"
-    button.textContent = "CONTINUE"
 }
 
 // inputsCorrect bellow
@@ -29,39 +28,28 @@ function showThankYou(){
 function inputsCorrect(){    
     inputs.forEach(input => {
         let errorMessage = input.parentElement.lastElementChild;
-        
-        console.log(errorMessage)
-
-        // debugger              
+            
         if (input.value === ""){            
             checkMessage("Can't be blank", input, errorMessage)            
         } else if (input.id === "cardNumber"){
             const message = checkIfNumberCorrect(input.value)
             checkMessage(message, input, errorMessage)            
-        }
-        
-        else if (input.id === "cardCvc"){        
+        } else if (input.id === "cardCvc"){        
             const message = cvcErrorMessage(input.value)
             checkMessage(message, input, errorMessage)
-        } 
-        
-        // else if (input.id === "exp_date--mm") {        
-        //     const message = checkIfExpDateMonthCorrect(input.value)
-        //     checkMessage(message, input, errorMessage)           
-        // } 
-        
-        // else if (input.id === "exp_date--yy") {     
-        //     if (errorMessage.style.display === "none"){
-        //         const message = checkIfExpDateYearCorrect(input.value)
-        //         checkMessage(message, input, errorMessage)         
-        //     }
-        // }
-        // else {
-        //     errorMessage.style.display = 'none'            
-        //     input.style.borderColor = '#dfdfdf'
-        // }
-    })
-    // return inputs.some(input => input.style.borderColor === 'red') !== true
+        } else if (input.id === "cardMonth") {        
+            const message = checkIfExpDateMonthCorrect(input.value)
+            checkMessage(message, input, errorMessage)           
+        } else if (input.id === "cardYear") {     
+            const message = checkIfExpDateYearCorrect(input.value)
+            checkMessage(message, input, errorMessage)         
+        } else {
+            errorMessage.style.display = 'none'            
+            input.style.borderColor = 'hsl(270, 3%, 87%)'
+        }
+    });
+    const inputArr = Array.from(form.getElementsByTagName('input'));
+    return inputArr.some(input => input.style.borderColor === 'red') !== true
 }
 
 function checkMessage(message, input, errorMessage){    
@@ -74,6 +62,11 @@ function checkMessage(message, input, errorMessage){
         input.style.borderColor = 'hsl(270, 3%, 87%)'
     }   
 }
+
+cardName.addEventListener("input", function() {
+    this.value = this.value.replace(/[^a-z\s]/gi, '').substring(0, 20);
+    paragraphs[1].textContent = this.value
+});
 
 cardNumber.addEventListener("input", function() {
     this.value = this.value.replace(/[^\d\s/]/g , "").substring(0, 16);
@@ -103,34 +96,28 @@ function cvcErrorMessage(value){
     return "correct"
 }
 
+cardMonth.addEventListener("input", function() {
+    this.value = this.value.replace(/[^\d\s/]/g , "").substring(0, 2);
+    if(this.value < 1 || this.value > 12) {
+        this.value = this.value.substring(0, 1);
+    }
+    spans[0].textContent = this.value;
+});
 
-inputsCorrect()
+function checkIfExpDateMonthCorrect(value){
+    const expMonth = parseInt(value);
+    if (expMonth < 1 || expMonth > 12) return "Between 1 and 12"    
+    return "correct"
+}
 
+cardYear.addEventListener("input", function() {
+    this.value = this.value.replace(/[^\d\s/]/g , "").substring(0, 2);
+    spans[1].textContent = this.value;
+});
 
-
-
-// cardName.addEventListener("input", function() {
-//     this.value = this.value.replace(/[^a-z\s]/gi, '').substring(0, 20);
-//     paragraphs[1].textContent = this.value
-// });
-
-// cardMonth.addEventListener("input", (e) => {
-//     e.target.value = e.target.value.replace(/[^\d\s/]/g , "").substring(0, 2);
-//     if(e.target.value < 1 || e.target.value > 12) {
-//         e.target.value = e.target.value.replace("")
-//     }
-//     spans[0].textContent = e.target.value;
-// });
-
-// cardYear.addEventListener("input", (e) => {
-//     e.target.value = e.target.value.replace(/[^\d\s/]/g , "").substring(0, 2);
-//     spans[1].textContent = e.target.value;
-// });
-
-
-// button.addEventListener("click", () => {
-//     if(a === true) {
-//         form.style.display = "none";
-//         messege.style.display = "flex";
-//     }
-// })
+function checkIfExpDateYearCorrect(value) {
+    const expYear = parseInt(value)   
+    const currentYear = new Date().getFullYear() % 100;
+    if (expYear < currentYear) return "Card expired"
+    return "correct"
+}

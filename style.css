@@ -171,7 +171,6 @@ form {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  justify-content: space-between;
 }
 
 label {
@@ -244,6 +243,12 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.cvc-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .messege {
@@ -409,7 +414,7 @@ h1 {
   #confirmBtn {
     padding: 10px;
     font-size: 15px;
-    margin-top: 0px;
+    margin-top: 20px;
   }
 
   .attribution {

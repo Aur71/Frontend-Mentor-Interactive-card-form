@@ -34,7 +34,6 @@
           <div class="inputWrapper">
             <label for="cardName">Cardholder Name</label>
             <input
-              pattern="[a-z\d]*"
               type="text"
               placeholder="e.g. Jane Appleseed"
               id="cardName"
@@ -67,15 +66,17 @@
                 </div>
               </div>
             </div>
-            <div class="inputWrapper cvc">
+            <div class="cvc-wrapper">
               <label for="cardCvc">CVC</label>
-              <input
-                type="text"
-                name="CVC"
-                id="cardCvc"
-                placeholder="e.g. 123"
-              />
-              <p>Can`t be blank</p>
+              <div class="inputWrapper cvc">
+                <input
+                  type="text"
+                  name="CVC"
+                  id="cardCvc"
+                  placeholder="e.g. 123"
+                />
+                <p>Can`t be blank</p>
+              </div>
             </div>
           </div>
           <button type="submit" id="confirmBtn">CONFIRM</button>
