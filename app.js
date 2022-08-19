@@ -40,10 +40,10 @@ function inputsCorrect(){
             checkMessage(message, input, errorMessage)            
         }
         
-        // else if (input.id === "exp_date--cvc"){        
-        //     const message = cvcErrorMessage(input.value)
-        //     checkMessage(message, input, errorMessage)
-        // } 
+        else if (input.id === "cardCvc"){        
+            const message = cvcErrorMessage(input.value)
+            checkMessage(message, input, errorMessage)
+        } 
         
         // else if (input.id === "exp_date--mm") {        
         //     const message = checkIfExpDateMonthCorrect(input.value)
@@ -75,38 +75,43 @@ function checkMessage(message, input, errorMessage){
     }   
 }
 
+cardNumber.addEventListener("input", function() {
+    this.value = this.value.replace(/[^\d\s/]/g , "").substring(0, 16);
+    const str = `${this.value}`;
+    const arr = str.split("");
+    arr.splice(4, 0, " ");
+    arr.splice(9, 0, " ");
+    arr.splice(14, 0, " ");
+    const result = arr.join("");
+    paragraphs[0].textContent = `${result}`
+});
+
 function checkIfNumberCorrect(){    
-    const len = cardholdersNumber.value.split(" ")
-    if (len.length !== 4) return "wrong format"    
-    for (let i = 0; i < len.length; i++){         
-        if (isNaN(parseInt(len[i])) || parseInt(len[i]) != len[i]) return "wrong format, numbers only!"
-        if (len[i].length !== 4) return "must consist 16 number"
+    if (cardNumber.value.length < 4) {
+        return "Wrong format"    
     }
     return "correct"
 }
+
+cardCVC.addEventListener("input", function() {
+    this.value = this.value.replace(/[^\d\s/]/g , "").substring(0, 3);
+    paragraphs[2].textContent = this.value
+});
+
+function cvcErrorMessage(value){     
+    if (value.length !== 3)  return "Must consist 3 numbers"
+    return "correct"
+}
+
 
 inputsCorrect()
 
 
 
 
-
-// formName.addEventListener("input", function() {
+// cardName.addEventListener("input", function() {
 //     this.value = this.value.replace(/[^a-z\s]/gi, '').substring(0, 20);
 //     paragraphs[1].textContent = this.value
-//     return cardHolderName = this.value.toString();
-// });
-
-
-// cardNumber.addEventListener("input", (e) => {
-//     e.target.value = e.target.value.replace(/[^\d\s/]/g , "").substring(0, 16);
-//     const str = `${e.target.value}`;
-//     const arr = str.split("");
-//     arr.splice(4, 0, " ");
-//     arr.splice(9, 0, " ");
-//     arr.splice(14, 0, " ");
-//     const result = arr.join("");
-//     paragraphs[0].textContent = `${result}`
 // });
 
 // cardMonth.addEventListener("input", (e) => {
@@ -120,11 +125,6 @@ inputsCorrect()
 // cardYear.addEventListener("input", (e) => {
 //     e.target.value = e.target.value.replace(/[^\d\s/]/g , "").substring(0, 2);
 //     spans[1].textContent = e.target.value;
-// });
-
-// cardCVC.addEventListener("input", (e) => {
-//     e.target.value = e.target.value.replace(/[^\d\s/]/g , "").substring(0, 3);
-//     paragraphs[3].textContent = e.target.value
 // });
 
 
